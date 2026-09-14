@@ -6,7 +6,8 @@ public class TimerScript : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI m_timerText;
     public bool m_isActive;
-    public float m_timer; 
+    public float m_timer;
+    public GameObject m_warningText; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,12 +38,14 @@ public class TimerScript : MonoBehaviour
     public void ResetTimer()
     {
         m_timer = 300;
+        m_warningText.SetActive(false);
     }
 
     public void OutOfTime()
     {
         Debug.Log("Out of time");
         m_isActive = false;
+        m_warningText.SetActive(false);
         //put game over function here
     }
     public void UpdateTimerText()
@@ -50,5 +53,9 @@ public class TimerScript : MonoBehaviour
         int m_minutes = Mathf.FloorToInt(m_timer / 60);
         int m_seconds = Mathf.FloorToInt(m_timer % 60);
         m_timerText.text = string.Format("{0}:{1:00}", m_minutes, m_seconds);
+        if(m_timer < 60 & m_isActive)
+        {
+           m_warningText.SetActive(true);
+        }
     }
 }
