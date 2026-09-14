@@ -45,6 +45,7 @@ public class TimerScript : MonoBehaviour
     {
         Debug.Log("Out of time");
         m_isActive = false;
+        m_timer = 0f;
         m_warningText.SetActive(false);
         //put game over function here
     }
