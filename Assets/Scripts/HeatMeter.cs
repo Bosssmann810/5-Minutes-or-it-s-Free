@@ -9,6 +9,7 @@ public class HeatMeter : MonoBehaviour
     public Image m_meterImage;
     public GameObject m_highHeatWarning;
     public GameObject m_burnOutText; 
+    public player_script m_player; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,10 +47,12 @@ public class HeatMeter : MonoBehaviour
     {
         if(m_totalHeat >= 100)
         {
+            Debug.Log("BURNOUT!");
             m_totalHeat = 100;
             m_burnOutTriggered=true;
             m_burnOutText.SetActive(true);
-            //add the function to disable boosting here
+            m_player.isBurnedOut = true;
+            m_player.CancelThruster();
         }
 
         if(m_totalHeat <= 0 && m_burnOutTriggered == true)
@@ -57,7 +60,12 @@ public class HeatMeter : MonoBehaviour
             m_burnOutTriggered = false;
             m_burnOutText.SetActive(false);
             m_totalHeat = 0;
-            //add the function to reenable boosting here
+            m_player.isBurnedOut=false;
+            if (m_player.holdingThrusterButton == true)
+            {
+                m_player.RestartThrusters();
+
+            }
         }
     }
     public void UpdateMeter()

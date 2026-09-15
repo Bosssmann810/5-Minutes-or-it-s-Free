@@ -10,6 +10,8 @@ public class player_script : MonoBehaviour
     private Vector2 movementDirection;
     public float rayLength = 0.6f;
     public LayerMask groundLayer;
+    public bool isBurnedOut = false;
+    public bool holdingThrusterButton = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,16 +38,30 @@ public class player_script : MonoBehaviour
     }
     public void OnThruster(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.performed && isBurnedOut == false)
         {
+            Debug.Log("e");
+            holdingThrusterButton = true;
             movementSpeed = ThrusterSpeed;
         }
         if (context.canceled)
         {
             movementSpeed = 2f;
+            holdingThrusterButton = false;
         }
     }
-    
+
+    public void CancelThruster()
+    {
+        movementSpeed = 2f;
+    }
+    public void RestartThrusters()
+    {
+        Debug.Log("e");
+        movementSpeed = ThrusterSpeed;
+    }
+
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if(context.performed)
