@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 56218860}
   - component: {fileID: 56218859}
   - component: {fileID: 56218858}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1525,6 +1525,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   movement: {x: 0, y: 0}
   movementSpeed: 2
+  rayLength: 1.07
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!212 &1438310349
 SpriteRenderer:
   serializedVersion: 2

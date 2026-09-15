@@ -8,7 +8,9 @@ public class player_script : MonoBehaviour
     [SerializeField] private float movementSpeed = 2f;
     private Rigidbody2D rb;
     private Vector2 movementDirection;
-    
+    public float rayLength = 0.6f;
+    public LayerMask groundLayer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,8 +20,8 @@ public class player_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+
+        Debug.DrawRay(transform.position, Vector2.down * rayLength, Color.red);
     }
 
     void FixedUpdate()
@@ -48,9 +50,25 @@ public class player_script : MonoBehaviour
     {
         if(context.performed)
         {
-            rb.AddForce(Vector2.up * 10000f);
+            
+            if (IsGrounded())
+            {
+                Debug.Log(context.action);
+                rb.AddForce(Vector2.up * 10000f);
+            }
+            
         }
         
-        Debug.Log(context.action);
+        
+    }
+
+    bool IsGrounded()
+    {
+        Debug.DrawRay(transform.position, Vector2.down * rayLength, Color.red);
+        return Physics2D.Raycast(transform.position, Vector2.down, rayLength, groundLayer);
+
+        
+
+        
     }
 }
