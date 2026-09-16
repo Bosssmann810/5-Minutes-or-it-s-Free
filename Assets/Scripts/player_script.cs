@@ -110,7 +110,7 @@ public class player_script : MonoBehaviour
 
     public void OnHit()
     {
-        rb.AddForce(Vector2.left * 40f);
-        rb.AddForce(Vector2.up * 40f);
+        rb.AddForce(movement * -1000f);
+        rb.AddForce(Vector2.up * 1000f);
     }
 }
