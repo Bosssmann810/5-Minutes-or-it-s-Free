@@ -104,4 +104,10 @@ public class player_script : MonoBehaviour
     {
         test = false;
     }
+
+    public void OnHit()
+    {
+        rb.AddForce(Vector2.left * 40f);
+        rb.AddForce(Vector2.up * 40f);
+    }
 }
