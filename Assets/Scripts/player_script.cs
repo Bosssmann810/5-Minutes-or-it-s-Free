@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class player_script : MonoBehaviour
 {
+    
     public Vector2 movement;
     private float ThrusterSpeed = 10f;
     [SerializeField] private float movementSpeed = 2f;
@@ -24,17 +25,18 @@ public class player_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         Debug.DrawRay(transform.position, Vector2.down * rayLength, Color.red);
     }
 
     void FixedUpdate()
     {
         rb.linearVelocity = movement * movementSpeed;
+        rb.AddForce(Physics.gravity * Time.deltaTime*1000 * rb.mass);
 
         if (test)
         {
-            rb.AddForce(Vector2.up * 40f * Time.deltaTime* 6f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * 70f * Time.deltaTime* 6f, ForceMode2D.Impulse);
             Invoke(nameof(Wait), 0.25f);
             
             
