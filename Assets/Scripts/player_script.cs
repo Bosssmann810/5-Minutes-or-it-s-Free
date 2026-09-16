@@ -32,6 +32,7 @@ public class player_script : MonoBehaviour
     void FixedUpdate()
     {
         rb.linearVelocity = movement * movementSpeed;
+        // gravity here might need to fix the 1000 or use old gravity 
         rb.AddForce(Physics.gravity * Time.deltaTime*1000 * rb.mass);
 
         if (test)
