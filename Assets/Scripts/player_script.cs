@@ -13,6 +13,8 @@ public class player_script : MonoBehaviour
     public bool isBurnedOut = false;
     public bool holdingThrusterButton = false;
 
+    public bool test = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +31,14 @@ public class player_script : MonoBehaviour
     void FixedUpdate()
     {
         rb.linearVelocity = movement * movementSpeed;
+
+        if (test)
+        {
+            rb.AddForce(Vector2.up * 40f * Time.deltaTime* 6f, ForceMode2D.Impulse);
+            Invoke(nameof(Wait), 0.25f);
+            
+            
+        }
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -69,8 +79,10 @@ public class player_script : MonoBehaviour
             
             if (IsGrounded())
             {
+                test = true;
                 Debug.Log(context.action);
-                rb.AddForce(Vector2.up * 10000f);
+                
+                
             }
             
         }
@@ -86,5 +98,10 @@ public class player_script : MonoBehaviour
         
 
         
+    }
+
+    void Wait()
+    {
+        test = false;
     }
 }
