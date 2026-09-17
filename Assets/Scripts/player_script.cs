@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ public class player_script : MonoBehaviour
     public LayerMask groundLayer;
     public bool isBurnedOut = false;
     public bool holdingThrusterButton = false;
+    public bool iFramesActive = false;
 
     public bool test = false;
 
@@ -110,7 +112,21 @@ public class player_script : MonoBehaviour
 
     public void OnHit()
     {
+        if(iFramesActive == false)
+        {
+            StartCoroutine(InvicibilityFrames());
+        }
+    }
+
+    public IEnumerator InvicibilityFrames()
+    {
+        iFramesActive = true;
+        Debug.Log("hit");
         rb.AddForce(movement * -1000f);
-        rb.AddForce(Vector2.up * 1000f);
+        rb.AddForce(Vector2.up * 100f);
+        yield return new WaitForSeconds(2);
+        iFramesActive = false;
+        Debug.Log("no more I frames");
+        StopCoroutine(InvicibilityFrames());
     }
 }
