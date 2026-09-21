@@ -3151,7 +3151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1147568485
 Transform:
   m_ObjectHideFlags: 0
@@ -6018,6 +6018,10 @@ PrefabInstance:
       propertyPath: m_timer
       value: 
       objectReference: {fileID: 296565791}
+    - target: {fileID: 1289664970799222374, guid: 11e7fb9d4d4ab4c46a4fb6c5c1181453, type: 3}
+      propertyPath: TutorialUI
+      value: 
+      objectReference: {fileID: 1147568484}
     - target: {fileID: 5685890216285200631, guid: 11e7fb9d4d4ab4c46a4fb6c5c1181453, type: 3}
       propertyPath: m_Name
       value: StartGate
