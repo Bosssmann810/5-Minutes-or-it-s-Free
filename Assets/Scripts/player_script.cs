@@ -16,6 +16,7 @@ public class player_script : MonoBehaviour
     public bool holdingThrusterButton = false;
     public bool iFramesActive = false;
 
+    public float jumpForce = 10;
     public bool test = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,7 +40,7 @@ public class player_script : MonoBehaviour
 
         if (test)
         {
-            rb.AddForce(Vector2.up * 70f * Time.deltaTime* 6f, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up *jumpForce * Time.deltaTime* 6f, ForceMode2D.Impulse);
             Invoke(nameof(Wait), 0.25f);
             
             
