@@ -36,7 +36,7 @@ public class player_script : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2( movement.x * movementSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2( rb.linearVelocity.x + movement.x /5f , rb.linearVelocity.y);
         // gravity here might need to fix the 1000 or use old gravity 
         //rb.AddForce(Physics.gravity * Time.deltaTime*1000 * rb.mass);
 
@@ -60,6 +60,7 @@ public class player_script : MonoBehaviour
         {
             Debug.Log("e");
             movementSpeed = ThrusterSpeed;
+            rb.AddForce(Vector2.right * movement/5 *1000f);
         }
         if (context.performed)
         {
@@ -128,7 +129,7 @@ public class player_script : MonoBehaviour
     {
         iFramesActive = true;
         Debug.Log("hit");
-        rb.AddForce(movement * -1000f);
+        rb.linearVelocityX = 0f;
         rb.AddForce(Vector2.up * 100f);
         m_gameManager.DamageTaken();
         yield return new WaitForSeconds(2);
