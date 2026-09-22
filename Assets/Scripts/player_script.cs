@@ -19,6 +19,8 @@ public class player_script : MonoBehaviour
     public float jumpForce = 10;
     public bool test = false;
 
+    public GameManager m_gameManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -128,6 +130,7 @@ public class player_script : MonoBehaviour
         Debug.Log("hit");
         rb.AddForce(movement * -1000f);
         rb.AddForce(Vector2.up * 100f);
+        m_gameManager.DamageTaken();
         yield return new WaitForSeconds(2);
         iFramesActive = false;
         Debug.Log("no more I frames");
