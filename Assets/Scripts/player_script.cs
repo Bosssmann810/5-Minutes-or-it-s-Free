@@ -4,10 +4,11 @@ using UnityEngine.InputSystem;
 
 public class player_script : MonoBehaviour
 {
+    private float topSpeed;
+    private float normalSpeed = 10f;
     private float faceingDerection;
     public Vector2 movement;
-    private float ThrusterSpeed = 10f;
-    [SerializeField] private float movementSpeed = 2f;
+    private float ThrusterSpeed = 20f;
     private Rigidbody2D rb;
     private Vector2 movementDirection;
     public float rayLength = 0.6f;
@@ -25,6 +26,7 @@ public class player_script : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        topSpeed = normalSpeed;
     }
 
     // Update is called once per frame
@@ -37,6 +39,14 @@ public class player_script : MonoBehaviour
     void FixedUpdate()
     {
         rb.linearVelocity = new Vector2( rb.linearVelocity.x + movement.x /5f , rb.linearVelocity.y);
+        if (rb.linearVelocity.x > topSpeed)
+        {
+            rb.linearVelocityX = topSpeed;
+        }
+        if (rb.linearVelocity.x < -topSpeed)
+        {
+            rb.linearVelocityX = -topSpeed;
+        }
         // gravity here might need to fix the 1000 or use old gravity 
         //rb.AddForce(Physics.gravity * Time.deltaTime*1000 * rb.mass);
 
@@ -65,7 +75,7 @@ public class player_script : MonoBehaviour
         if (context.performed && isBurnedOut == false)
         {
             Debug.Log("e");
-            movementSpeed = ThrusterSpeed;
+            topSpeed = ThrusterSpeed;
             if(faceingDerection != 0)
             {
                 rb.AddForce(Vector2.right * faceingDerection * 1000f);
@@ -83,19 +93,27 @@ public class player_script : MonoBehaviour
         }
         if (context.canceled)
         {
-            movementSpeed = 2f;
+            topSpeed = normalSpeed;
             holdingThrusterButton = false;
         }
     }
 
     public void CancelThruster()
     {
-        movementSpeed = 2f;
+        topSpeed = normalSpeed;
     }
     public void RestartThrusters()
     {
         Debug.Log("e");
-        movementSpeed = ThrusterSpeed;
+        topSpeed = ThrusterSpeed;
+        if (faceingDerection != 0)
+        {
+            rb.AddForce(Vector2.right * faceingDerection * 1000f);
+        }
+        else
+        {
+            rb.AddForce(Vector2.right * 1000f);
+        }
     }
 
 
