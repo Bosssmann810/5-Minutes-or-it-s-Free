@@ -1,10 +1,11 @@
+using NUnit.Framework.Internal;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class player_script : MonoBehaviour
 {
-    private float topSpeed;
+    public float topSpeed;
     private float normalSpeed = 10f;
     private float faceingDerection;
     public Vector2 movement;
@@ -19,6 +20,7 @@ public class player_script : MonoBehaviour
 
     public float jumpForce = 10;
     public bool test = false;
+    public bool test2 = false;
 
     public GameManager m_gameManager;
 
@@ -38,17 +40,21 @@ public class player_script : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2( rb.linearVelocity.x + movement.x /5f , rb.linearVelocity.y);
+        
+        rb.linearVelocity = new Vector2( rb.linearVelocity.x + movement.x/5f, rb.linearVelocity.y);
         if (rb.linearVelocity.x > topSpeed)
         {
-            rb.linearVelocityX = topSpeed;
+            //rb.linearVelocityX = topSpeed;
+            rb.linearVelocityX -= topSpeed * Time.deltaTime * 2;
         }
         if (rb.linearVelocity.x < -topSpeed)
         {
-            rb.linearVelocityX = -topSpeed;
+            //rb.linearVelocityX = -topSpeed;
+            rb.linearVelocityX += topSpeed * Time.deltaTime * 2;
         }
-        // gravity here might need to fix the 1000 or use old gravity 
-        //rb.AddForce(Physics.gravity * Time.deltaTime*1000 * rb.mass);
+
+        
+        
 
         if (test)
         {
@@ -93,6 +99,7 @@ public class player_script : MonoBehaviour
         }
         if (context.canceled)
         {
+            test2 = true;
             topSpeed = normalSpeed;
             holdingThrusterButton = false;
         }
@@ -101,6 +108,7 @@ public class player_script : MonoBehaviour
     public void CancelThruster()
     {
         topSpeed = normalSpeed;
+        test2 = true;
     }
     public void RestartThrusters()
     {
