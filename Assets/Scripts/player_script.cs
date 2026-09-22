@@ -57,8 +57,11 @@ public class player_script : MonoBehaviour
         if (context.performed && isBurnedOut == false)
         {
             Debug.Log("e");
-            holdingThrusterButton = true;
             movementSpeed = ThrusterSpeed;
+        }
+        if (context.performed)
+        {
+            holdingThrusterButton = true;
         }
         if (context.canceled)
         {
