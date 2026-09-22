@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1162828813311025606}
   - component: {fileID: 5030519320715782656}
   m_Layer: 0
-  m_Name: DamageObsticle
+  m_Name: DamageObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
