@@ -2682,7 +2682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &721037328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5065,8 +5065,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9945a1fd339694186d0c0f9aa1f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  topSpeed: 0
   movement: {x: 0, y: 0}
-  movementSpeed: 2
   rayLength: 1.07
   groundLayer:
     serializedVersion: 2
@@ -5076,6 +5076,7 @@ MonoBehaviour:
   iFramesActive: 0
   jumpForce: 7
   test: 0
+  test2: 0
   m_gameManager: {fileID: 1520625686}
 --- !u!114 &1088183641
 MonoBehaviour:
@@ -7549,8 +7550,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a08f437fd34e6284c8eb75c7cdd74f2f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::PauseManager
   timerObject: {fileID: 1978276515}
+  PauseUI: {fileID: 721037327}
+  PlayerObject: {fileID: 1088183639}
+  heaterMeter: {fileID: 2026927464}
 --- !u!4 &1498067749
 Transform:
   m_ObjectHideFlags: 0
