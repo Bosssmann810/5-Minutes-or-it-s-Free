@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class player_script : MonoBehaviour
 {
-    
+    private float faceingDerection;
     public Vector2 movement;
     private float ThrusterSpeed = 10f;
     [SerializeField] private float movementSpeed = 2f;
@@ -51,8 +51,14 @@ public class player_script : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         movement =  new Vector2(context.ReadValue<Vector2>().x, 0f);
+        if (movement.x != 0)
+        {
+            faceingDerection = movement.x;
+        }
         
-        
+
+
+
     }
     public void OnThruster(InputAction.CallbackContext context)
     {
@@ -60,7 +66,16 @@ public class player_script : MonoBehaviour
         {
             Debug.Log("e");
             movementSpeed = ThrusterSpeed;
-            rb.AddForce(Vector2.right * movement/5 *1000f);
+            if(faceingDerection != 0)
+            {
+                rb.AddForce(Vector2.right * faceingDerection * 1000f);
+            }
+            else
+            {
+                rb.AddForce(Vector2.right  * 1000f);
+            }
+
+            
         }
         if (context.performed)
         {
