@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         m_timeRemaining = m_timer.m_timer; 
         m_totalScore  = m_timeRemaining * 100 / m_totalDamage;
         m_timeRemainingText.text = $"Time Remaining: {Mathf.FloorToInt(m_timeRemaining / 60)} minutes and {Mathf.FloorToInt(m_timeRemaining % 60)} seconds";
-        m_totalDamageText.text = $"Hits taken {m_totalDamage -1}";
+        m_totalDamageText.text = $"Hits taken: {m_totalDamage -1}";
         m_scoreText.text = $"Final Score: {m_totalScore}";
     }
     public void DamageTaken()
