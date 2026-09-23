@@ -151,10 +151,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1831171477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 898, y: 505}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6982577
 CanvasRenderer:
@@ -258,7 +258,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8078966772632430244, guid: 61af78462a3534847b68f50833ed3853, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7595,7 +7595,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3985759516408998331, guid: 61af78462a3534847b68f50833ed3853, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8826,7 +8826,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -9
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1327783827800691072, guid: 61af78462a3534847b68f50833ed3853, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10260,7 +10260,7 @@ MonoBehaviour:
   holdingThrusterButton: 0
   iFramesActive: 0
   boostParticles: {fileID: 207016656}
-  jumpForce: 7
+  jumpForce: 400
   m_gameManager: {fileID: 1520625686}
 --- !u!114 &1088183641
 MonoBehaviour:
