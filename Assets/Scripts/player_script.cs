@@ -18,10 +18,10 @@ public class player_script : MonoBehaviour
     public bool isBurnedOut = false;
     public bool holdingThrusterButton = false;
     public bool iFramesActive = false;
+
     public ParticleSystem boostParticles;
-    public float jumpForce = 10;
-    public bool test = false;
-    public bool test2 = false;
+
+    public float jumpForce = 400f;
 
     public GameManager m_gameManager;
 
@@ -58,13 +58,7 @@ public class player_script : MonoBehaviour
         
         
 
-        if (test)
-        {
-            rb.AddForce(Vector2.up *jumpForce * Time.deltaTime* 6f, ForceMode2D.Impulse);
-            Invoke(nameof(Wait), 0.25f);
-            
-            
-        }
+        
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -87,11 +81,11 @@ public class player_script : MonoBehaviour
             boostParticles.Play();
             if(faceingDerection != 0)
             {
-                rb.AddForce(Vector2.right * faceingDerection * 1000f);
+                rb.AddForce(Vector2.right * faceingDerection * 500f);
             }
             else
             {
-                rb.AddForce(Vector2.right  * 1000f);
+                rb.AddForce(Vector2.right  * 500f);
             }
 
             
@@ -102,8 +96,10 @@ public class player_script : MonoBehaviour
         }
         if (context.canceled)
         {
+
             boostParticles.Stop();
-            test2 = true;
+            
+
             topSpeed = normalSpeed;
             holdingThrusterButton = false;
         }
@@ -113,7 +109,7 @@ public class player_script : MonoBehaviour
     {
         boostParticles.Stop();
         topSpeed = normalSpeed;
-        test2 = true;
+        
     }
     public void RestartThrusters()
     {
@@ -138,10 +134,10 @@ public class player_script : MonoBehaviour
             
             if (IsGrounded())
             {
-                test = true;
+                
                 Debug.Log(context.action);
-                
-                
+                rb.AddForce(Vector2.up * jumpForce);
+
             }
             
         }
@@ -159,15 +155,13 @@ public class player_script : MonoBehaviour
         
     }
 
-    void Wait()
-    {
-        test = false;
-    }
-
+    
     public void OnHit()
     {
-        if(iFramesActive == false)
+        
+        if (iFramesActive == false)
         {
+            
             StartCoroutine(InvicibilityFrames());
         }
     }
@@ -177,7 +171,7 @@ public class player_script : MonoBehaviour
         iFramesActive = true;
         Debug.Log("hit");
         rb.linearVelocityX = 0f;
-        rb.AddForce(Vector2.up * 100f);
+        rb.AddForce(Vector2.up * 700f);
         m_gameManager.DamageTaken();
         yield return new WaitForSeconds(2);
         iFramesActive = false;
