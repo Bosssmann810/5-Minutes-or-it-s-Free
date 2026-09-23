@@ -8921,7 +8921,7 @@ MonoBehaviour:
   holdingThrusterButton: 0
   iFramesActive: 0
   boostParticles: {fileID: 1442722211}
-  jumpForce: 7
+  jumpForce: 400
   m_gameManager: {fileID: 1800515755}
 --- !u!212 &1438310349
 SpriteRenderer:
