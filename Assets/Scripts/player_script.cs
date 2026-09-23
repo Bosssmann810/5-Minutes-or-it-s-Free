@@ -8,7 +8,7 @@ public class player_script : MonoBehaviour
 {
     public float topSpeed;
     private float normalSpeed = 10f;
-    private float faceingDerection;
+    public float faceingDerection;
     public Vector2 movement;
     private float ThrusterSpeed = 20f;
     private Rigidbody2D rb;
