@@ -18,7 +18,7 @@ public class player_script : MonoBehaviour
     public bool isBurnedOut = false;
     public bool holdingThrusterButton = false;
     public bool iFramesActive = false;
-
+    public ParticleSystem boostParticles;
     public float jumpForce = 10;
     public bool test = false;
     public bool test2 = false;
@@ -84,6 +84,7 @@ public class player_script : MonoBehaviour
         {
             Debug.Log("e");
             topSpeed = ThrusterSpeed;
+            boostParticles.Play();
             if(faceingDerection != 0)
             {
                 rb.AddForce(Vector2.right * faceingDerection * 1000f);
@@ -101,6 +102,7 @@ public class player_script : MonoBehaviour
         }
         if (context.canceled)
         {
+            boostParticles.Stop();
             test2 = true;
             topSpeed = normalSpeed;
             holdingThrusterButton = false;
@@ -109,6 +111,7 @@ public class player_script : MonoBehaviour
 
     public void CancelThruster()
     {
+        boostParticles.Stop();
         topSpeed = normalSpeed;
         test2 = true;
     }
@@ -116,6 +119,7 @@ public class player_script : MonoBehaviour
     {
         Debug.Log("e");
         topSpeed = ThrusterSpeed;
+        boostParticles.Play();
         if (faceingDerection != 0)
         {
             rb.AddForce(Vector2.right * faceingDerection * 1000f);
