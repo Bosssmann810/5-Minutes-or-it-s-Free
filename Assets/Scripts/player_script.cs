@@ -14,6 +14,7 @@ public class player_script : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movementDirection;
     public float rayLength = 0.6f;
+    public GameObject boostParticle;
     public LayerMask groundLayer;
     public bool isBurnedOut = false;
     public bool holdingThrusterButton = false;
@@ -37,6 +38,18 @@ public class player_script : MonoBehaviour
     {
         
         Debug.DrawRay(transform.position, Vector2.down * rayLength, Color.red);
+        //DO NOT CHANGE THIS UNLESS MASON SAYS TO
+        if(faceingDerection >= 0)
+        {
+            boostParticle.transform.localPosition = new Vector3(-0.01000023f, 0.23f, 0);
+            boostParticle.transform.rotation = new Quaternion(0,0, -260,30);
+            
+        }
+        if(faceingDerection < 0)
+        {
+            boostParticle.transform.localPosition = new Vector3(0.5000023f, 0.23f, 0);
+            boostParticle.transform.localRotation = new Quaternion(0,0,-60,100);
+        }
        
     }
 

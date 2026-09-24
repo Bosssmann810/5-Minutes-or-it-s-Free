@@ -8914,6 +8914,7 @@ MonoBehaviour:
   faceingDerection: 0
   movement: {x: 0, y: 0}
   rayLength: 1.07
+  boostParticle: {fileID: 1442722210}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -14171,13 +14172,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442722210}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.9961947, w: -0.08715578}
-  m_LocalPosition: {x: -0.010000229, y: 0.23000002, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: 0.1, y: 0.23000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1438310350}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
 --- !u!1 &1457851792
 GameObject:
   m_ObjectHideFlags: 0
