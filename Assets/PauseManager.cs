@@ -5,7 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PauseManager : MonoBehaviour
 {
-    public TimerScript timerObject;
+    public GameObject startGate;
+
+    public GameObject timerObject;
+
+    public GameObject spriteObject;
+
+    private Animator spriteAnimator;
+
+    private TimerScript timer;
+
+    private StartGate gate;
 
     private player_script player;
 
@@ -31,6 +41,9 @@ public class PauseManager : MonoBehaviour
 
     void Awake()
     {
+        spriteAnimator = spriteObject.GetComponent<Animator>();
+        gate = startGate.GetComponent<StartGate>();
+        timer = timerObject.GetComponent<TimerScript>();
         player = PlayerObject.GetComponent<player_script>();
         input = PlayerObject.GetComponent<PlayerInput>();
         rb = PlayerObject.GetComponent<Rigidbody2D>();
@@ -47,8 +60,18 @@ public class PauseManager : MonoBehaviour
     }
     public void Resume()
     {
-        timerObject.StartTimer();
+        if(gate.startGame == true)
+        {
+            timer.StartTimer();
+        }
+
+        meter.enabled = true;
+        rb.WakeUp();
+        PauseUI.active = false;
         player.enabled = true;
+        input.enabled = true;
+        spriteAnimator.enabled = true;
+
     }
     private void Update()
     {
@@ -62,8 +85,9 @@ public class PauseManager : MonoBehaviour
                 PauseUI.active = true;
                 player.enabled = false;
                 input.enabled = false;
+                spriteAnimator.enabled = false;
                 rb.Sleep();
-                timerObject.StopTimer();
+                timer.StopTimer();
             }
             else
             {
@@ -72,7 +96,11 @@ public class PauseManager : MonoBehaviour
                 PauseUI.active = false;
                 player.enabled = true;
                 input.enabled = true;
-                timerObject.StartTimer();
+                spriteAnimator.enabled = true;
+                if (gate.startGame == true)
+                {
+                    timer.StartTimer();
+                }
             }
             
         }

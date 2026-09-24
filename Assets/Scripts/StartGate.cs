@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StartGate : MonoBehaviour
 {
-    
+    public bool startGame = false;
     public GameObject TutorialUI;
     [SerializeField] TimerScript m_timer;
 
@@ -11,6 +11,7 @@ public class StartGate : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            startGame = true;
             TutorialUI.SetActive(false);
             m_timer.StartTimer();
         }
