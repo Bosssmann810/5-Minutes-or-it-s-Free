@@ -8,6 +8,7 @@ public class PlayerAudioManager : MonoBehaviour
     public bool playingJumpAudio;
     public AudioClip jumpAudioClip;
     public AudioSource jumpAudioSource;
+    public AudioClip hurtAudioClip;
 
 
     public void PlayBoostAudio()
@@ -24,7 +25,11 @@ public class PlayerAudioManager : MonoBehaviour
         playingBoostAudio = false;
         BoostAudioSource.Stop();
     }
-
+    public void PlayHurtSound()
+    {
+        jumpAudioSource.clip = hurtAudioClip;
+        jumpAudioSource.Play();
+    }
     public void PlayJumpAudio()
     {
         jumpAudioSource.clip = jumpAudioClip;

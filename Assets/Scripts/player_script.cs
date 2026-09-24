@@ -184,6 +184,7 @@ public class player_script : MonoBehaviour
 
     public IEnumerator InvicibilityFrames()
     {
+        playerAudioManager.PlayHurtSound();
         iFramesActive = true;
         Debug.Log("hit");
         rb.linearVelocityX = 0f;

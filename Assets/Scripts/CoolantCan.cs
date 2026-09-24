@@ -9,6 +9,7 @@ public class CoolantCan : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             m_playerHeat.m_totalHeat = 0;
+            GameObject.FindGameObjectWithTag("CoolantAudio").GetComponent<AudioSource>().Play();
             this.gameObject.SetActive(false);
         }
     }
