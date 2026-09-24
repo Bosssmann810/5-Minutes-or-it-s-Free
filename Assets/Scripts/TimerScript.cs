@@ -9,6 +9,7 @@ public class TimerScript : MonoBehaviour
     public float m_timer;
     public GameObject m_warningText;
     public GameManager m_gameManager;
+    public AudioSource music;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +22,7 @@ public class TimerScript : MonoBehaviour
         if (m_isActive)
         {
             m_timer -= Time.deltaTime;
+            
         }
         if (m_timer < 0)
         {
@@ -31,10 +33,12 @@ public class TimerScript : MonoBehaviour
     public void StartTimer()
     {
         m_isActive = true;
+        music.Play();
     }
     public void StopTimer()
     {
         m_isActive = false;
+        music.Pause();
     }
     public void ResetTimer()
     {

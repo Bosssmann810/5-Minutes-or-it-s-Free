@@ -9912,7 +9912,7 @@ MonoBehaviour:
   holdingThrusterButton: 0
   iFramesActive: 0
   boostParticles: {fileID: 134767669}
-  jumpForce: 7
+  jumpForce: 400
   m_gameManager: {fileID: 1520625686}
 --- !u!114 &1088183641
 MonoBehaviour:
