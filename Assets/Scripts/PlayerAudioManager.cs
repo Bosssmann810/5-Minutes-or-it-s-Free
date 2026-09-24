@@ -2,24 +2,34 @@ using UnityEngine;
 
 public class PlayerAudioManager : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioSource BoostAudioSource;
     public AudioClip boostAudioClip;
-    public bool playingAudio;
+    public bool playingBoostAudio;
+    public bool playingJumpAudio;
+    public AudioClip jumpAudioClip;
+    public AudioSource jumpAudioSource;
 
 
-    public void PlayAudio()
+    public void PlayBoostAudio()
     {
-        if (playingAudio == false)
+        if (playingBoostAudio == false)
         {
-            playingAudio = true;
-            audioSource.clip = boostAudioClip;
-            audioSource.Play();
+            playingBoostAudio = true;
+            BoostAudioSource.clip = boostAudioClip;
+            BoostAudioSource.Play();
         }
     }
-    public void StopAudio()
+    public void StopBoostAudio()
     {
-        playingAudio = false;
-        audioSource.Stop();
+        playingBoostAudio = false;
+        BoostAudioSource.Stop();
     }
+
+    public void PlayJumpAudio()
+    {
+        jumpAudioSource.clip = jumpAudioClip;
+        jumpAudioSource.Play();
+    }
+
 
 }

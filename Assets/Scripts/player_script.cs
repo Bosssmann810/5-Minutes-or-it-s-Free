@@ -89,7 +89,7 @@ public class player_script : MonoBehaviour
     {
         if (context.performed && isBurnedOut == false)
         {
-            playerAudioManager.PlayAudio();
+            playerAudioManager.PlayBoostAudio();
             Debug.Log("e");
             topSpeed = ThrusterSpeed;
             boostParticles.Play();
@@ -113,7 +113,7 @@ public class player_script : MonoBehaviour
 
             boostParticles.Stop();
             
-            playerAudioManager.StopAudio();
+            playerAudioManager.StopBoostAudio();
             topSpeed = normalSpeed;
             holdingThrusterButton = false;
         }
@@ -121,13 +121,13 @@ public class player_script : MonoBehaviour
 
     public void CancelThruster()
     {
-        playerAudioManager.StopAudio();
+        playerAudioManager.StopBoostAudio();
         boostParticles.Stop();
         topSpeed = normalSpeed;
     }
     public void RestartThrusters()
     {
-        playerAudioManager.PlayAudio();
+        playerAudioManager.PlayBoostAudio();
         Debug.Log("e");
         topSpeed = ThrusterSpeed;
         boostParticles.Play();
@@ -151,6 +151,7 @@ public class player_script : MonoBehaviour
             {
                 
                 Debug.Log(context.action);
+                playerAudioManager.PlayJumpAudio();
                 rb.AddForce(Vector2.up * jumpForce);
 
             }
