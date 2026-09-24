@@ -9,7 +9,8 @@ public class HeatMeter : MonoBehaviour
     public Image m_meterImage;
     public GameObject m_highHeatWarning;
     public GameObject m_burnOutText; 
-    public player_script m_player; 
+    public player_script m_player;
+    public AudioSource heatmeterSound;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,6 +48,7 @@ public class HeatMeter : MonoBehaviour
     {
         if(m_totalHeat >= 100)
         {
+            heatmeterSound.Play();
             Debug.Log("BURNOUT!");
             m_totalHeat = 100;
             m_burnOutTriggered=true;

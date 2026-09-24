@@ -25,7 +25,7 @@ public class player_script : MonoBehaviour
     public float jumpForce = 400f;
 
     public GameManager m_gameManager;
-
+    public PlayerAudioManager playerAudioManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -89,6 +89,7 @@ public class player_script : MonoBehaviour
     {
         if (context.performed && isBurnedOut == false)
         {
+            playerAudioManager.PlayAudio();
             Debug.Log("e");
             topSpeed = ThrusterSpeed;
             boostParticles.Play();
@@ -112,7 +113,7 @@ public class player_script : MonoBehaviour
 
             boostParticles.Stop();
             
-
+            playerAudioManager.StopAudio();
             topSpeed = normalSpeed;
             holdingThrusterButton = false;
         }
@@ -120,12 +121,13 @@ public class player_script : MonoBehaviour
 
     public void CancelThruster()
     {
+        playerAudioManager.StopAudio();
         boostParticles.Stop();
         topSpeed = normalSpeed;
-        
     }
     public void RestartThrusters()
     {
+        playerAudioManager.PlayAudio();
         Debug.Log("e");
         topSpeed = ThrusterSpeed;
         boostParticles.Play();
