@@ -105,4 +105,12 @@ public class PauseManager : MonoBehaviour
             
         }
     }
+
+    public void DisableGame()
+    {
+        meter.enabled = false;
+        player.enabled = false;
+        input.enabled = false;
+        spriteAnimator.enabled = false;
+    }
 }
