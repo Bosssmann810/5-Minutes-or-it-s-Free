@@ -14,6 +14,7 @@ public class StartGate : MonoBehaviour
             startGame = true;
             TutorialUI.SetActive(false);
             m_timer.StartTimer();
+            Destroy(gameObject);
         }
     }
 }
