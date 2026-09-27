@@ -30957,6 +30957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseManager
   startGate: {fileID: 1628664869}
+  tutorial: {fileID: 1112086362}
   timerObject: {fileID: 296565790}
   spriteObject: {fileID: 1248277939}
   PauseUI: {fileID: 632978417}

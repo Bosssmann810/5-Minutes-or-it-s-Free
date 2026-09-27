@@ -7,6 +7,8 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject startGate;
 
+    public GameObject tutorial;
+
     public GameObject timerObject;
 
     public GameObject spriteObject;
@@ -33,8 +35,8 @@ public class PauseManager : MonoBehaviour
 
     void start()
     {
-        
-        
+
+
 
         PauseUI.active = false;
     }
@@ -49,7 +51,7 @@ public class PauseManager : MonoBehaviour
         rb = PlayerObject.GetComponent<Rigidbody2D>();
         meter = heaterMeter.GetComponent<HeatMeter>();
     }
-    
+
     public void Restart()
     {
         SceneManager.LoadScene(1);
@@ -60,7 +62,7 @@ public class PauseManager : MonoBehaviour
     }
     public void Resume()
     {
-        if(gate.startGame == true)
+        if (gate.startGame == true)
         {
             timer.StartTimer();
         }
@@ -75,11 +77,11 @@ public class PauseManager : MonoBehaviour
     }
     private void Update()
     {
-        
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
-            if(player.enabled == true)
+            if (player.enabled == true)
             {
                 meter.enabled = false;
                 PauseUI.active = true;
@@ -91,18 +93,23 @@ public class PauseManager : MonoBehaviour
             }
             else
             {
-                meter.enabled = true;
-                rb.WakeUp();
-                PauseUI.active = false;
-                player.enabled = true;
-                input.enabled = true;
-                spriteAnimator.enabled = true;
-                if (gate.startGame == true)
+                if (!tutorial.activeInHierarchy)
                 {
-                    timer.StartTimer();
+                    meter.enabled = true;
+                    rb.WakeUp();
+
+                    player.enabled = true;
+                    input.enabled = true;
+                    spriteAnimator.enabled = true;
+                    if (gate.startGame == true)
+                    {
+                        timer.StartTimer();
+                    }
                 }
+                PauseUI.active = false;
+
             }
-            
+
         }
     }
 
